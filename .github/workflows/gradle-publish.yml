@@ -33,7 +33,7 @@ jobs:
           scan_dependencies: true
           scan_secrets: true
           pr: true
-          enable_pr_comments: ${{ env.ENDORCTL_PR }}
+          enable_pr_comments: 'val'
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
           
