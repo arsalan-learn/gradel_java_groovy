@@ -3,12 +3,8 @@
  */
 
 plugins {
+    id 'application'
     id 'buildlogic.java-application-conventions'
-    id 'lifecycle-base'
-    id "com.diffplug.spotless" version "6.25.0" apply false
-    id "org.gradle.test-retry" version "1.5.9" apply false
-    id "test-report-aggregation"
-    id 'jacoco-report-aggregation'
 
 }
 
