@@ -27,13 +27,13 @@ jobs:
         run: ./gradlew build
       - name: Endor Labs Scan Pull Request
         if: github.event_name == 'pull_request'
-        uses: endor-labs/endor-action@v1.1.3
+        uses: endorlabs/github-action@v1.1.3
         with:
           namespace: 'arsalan-learn'
           scan_dependencies: true
           scan_secrets: true
           pr: true
-          enable_pr_comment: ${{ env.ENDORCTL_PR }}
+          enable_pr_comments: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
           
