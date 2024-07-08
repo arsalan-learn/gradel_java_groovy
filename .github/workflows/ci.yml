@@ -61,3 +61,19 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:tagger
+
+    - name: Scan container
+      uses: endorlabs/github-action@main
+      with:
+        namespace: 'arsalan-learn'
+        scan_secrets: false
+        scan_dependencies: false
+        scan_container: true
+        pr: false
+        enable_github_action_token: true
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        log_verbose: true
+        log_level: "info"
+        project_name: "gradel_java_groovy_container"
+        scan_summary_output_type: "table"
+        image: 'docker_hub_repo:tagger'
