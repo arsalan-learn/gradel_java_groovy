@@ -82,4 +82,4 @@ jobs:
         log_level: "info"
         project_name: "gradel_java_groovy_container"
         scan_summary_output_type: "table"
-        image: 'docker_hub_repo:tagger'
+        image: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:tagger
