@@ -1,20 +1,17 @@
-name: Java CI with Gradle
+name: Endor SCA and Container Scanning
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
+    
 jobs:
-  build-java:
+  build:
     permissions:
       security-events: write # Used to upload Sarif artifact to GitHub
       contents: read # Used to check out a private repository
       actions: read # Required for private repositories to upload Sarif files. GitHub Advanced Security licenses are required.
       id-token: write # Used for keyless authentication with Endor Labs
       issues: write # Required to automatically comment on PRs for new policy violations
-      pull-requests: write # Required to automatically comment on PRs for new policy violations
 
     runs-on: ubuntu-latest
     
@@ -45,7 +42,6 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         log_verbose: true
         
-    
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
     
@@ -60,7 +56,7 @@ jobs:
       with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:tagger
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:your_tag
           
     - name: Scan container
       uses: endorlabs/github-action@main
@@ -74,6 +70,6 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         log_verbose: true
         log_level: "info"
-        project_name: "gradel_java_groovy_container"
+        project_name: "your_project_name"
         scan_summary_output_type: "table"
-        image: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:tagger
+        image: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:your_tag
