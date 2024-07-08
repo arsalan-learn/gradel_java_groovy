@@ -1,5 +1,4 @@
 name: Endor SCA and Container Scanning
-
 on:
   push:
     branches: [ main ]
