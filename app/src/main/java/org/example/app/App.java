@@ -15,7 +15,7 @@ public class App {
             // Vulnerable method: write
             File file = new File("vulnerable.txt");
             OutputStream os = fileItem.getOutputStream();
-            os.write("This is a test".getBytes());
+            os.write("This i a test".getBytes());
             os.close();
             
             System.out.println("File created: " + file.getAbsolutePath());
