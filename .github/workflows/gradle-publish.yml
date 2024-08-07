@@ -30,6 +30,7 @@ jobs:
         uses: endorlabs/github-action@v1.1.3
         with:
           namespace: 'arsalan-learn'
+          scan_summary_output_type: 'table'
           scan_dependencies: true
           scan_secrets: true
           pr: true
